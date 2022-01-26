@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlCommenterNet", "SqlComme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNet6", "TestNet6\TestNet6.csproj", "{032A7A9E-8ACC-45E5-8013-9B5A9324DA22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNetCore31", "TestNetCore31\TestNetCore31.csproj", "{FEBE7B61-C874-4EA1-80D6-75831F4AC201}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{032A7A9E-8ACC-45E5-8013-9B5A9324DA22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{032A7A9E-8ACC-45E5-8013-9B5A9324DA22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{032A7A9E-8ACC-45E5-8013-9B5A9324DA22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEBE7B61-C874-4EA1-80D6-75831F4AC201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEBE7B61-C874-4EA1-80D6-75831F4AC201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEBE7B61-C874-4EA1-80D6-75831F4AC201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEBE7B61-C874-4EA1-80D6-75831F4AC201}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
