@@ -27,7 +27,7 @@ namespace TestNet6
 
         // GET: api/Book/5
         [HttpGet("create")]
-        public async Task Get(int id)
+        public async Task Create(int id)
         {
             var book = new Book() {Name = "NewBook"};
             _context.Add(book);
