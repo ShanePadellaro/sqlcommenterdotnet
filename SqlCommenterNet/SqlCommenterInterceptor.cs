@@ -1,16 +1,12 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Reflection;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace SqlCommenter
 {
@@ -34,6 +30,7 @@ namespace SqlCommenter
             return result;
         }
 
+        #if NET5_0_OR_GREATER
         public override ValueTask<InterceptionResult<DbDataReader>> ReaderExecutingAsync(
             DbCommand command,
             CommandEventData eventData,
@@ -43,7 +40,6 @@ namespace SqlCommenter
             AddSqlComment(_contextAccessor?.ActionContext, command, eventData);
             return new ValueTask<InterceptionResult<DbDataReader>>(Task.FromResult(result));
         }
-
         public override InterceptionResult<object> ScalarExecuting(DbCommand command, CommandEventData eventData,
             InterceptionResult<object> result)
         {
@@ -73,6 +69,48 @@ namespace SqlCommenter
 
             return base.NonQueryExecutingAsync(command, eventData, result, cancellationToken);
         }
+        #else
+        public override Task<InterceptionResult<DbDataReader>> ReaderExecutingAsync(
+            DbCommand command,
+            CommandEventData eventData,
+            InterceptionResult<DbDataReader> result,
+            CancellationToken cancellationToken = default)
+        {
+            AddSqlComment(_contextAccessor?.ActionContext, command, eventData);
+            return Task.FromResult(result);
+        }
+    
+
+        public override InterceptionResult<object> ScalarExecuting(DbCommand command, CommandEventData eventData,
+            InterceptionResult<object> result)
+        {
+            AddSqlComment(_contextAccessor?.ActionContext, command, eventData);
+            return base.ScalarExecuting(command, eventData, result);
+        }
+
+        public override Task<InterceptionResult<object>> ScalarExecutingAsync(DbCommand command,
+            CommandEventData eventData, InterceptionResult<object> result,
+            CancellationToken cancellationToken = new CancellationToken())
+        {
+            AddSqlComment(_contextAccessor?.ActionContext, command, eventData);
+            return base.ScalarExecutingAsync(command, eventData, result, cancellationToken);
+        }
+
+        public override InterceptionResult<int> NonQueryExecuting(DbCommand command, CommandEventData eventData,
+            InterceptionResult<int> result)
+        {
+            AddSqlComment(_contextAccessor?.ActionContext, command, eventData);
+            return base.NonQueryExecuting(command, eventData, result);
+        }
+
+        public override Task<InterceptionResult<int>> NonQueryExecutingAsync(DbCommand command, CommandEventData eventData, InterceptionResult<int> result,
+            CancellationToken cancellationToken = new CancellationToken())
+        {
+            AddSqlComment(_contextAccessor?.ActionContext, command, eventData);
+
+            return base.NonQueryExecutingAsync(command, eventData, result, cancellationToken);
+        }
+#endif
 
 
         private void AddSqlComment(ActionContext context, DbCommand command, CommandEventData commandEventData)

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SqlCommenter;
 
 namespace TestNetCore31
 {
@@ -30,9 +31,11 @@ namespace TestNetCore31
             Configuration = builder.Build();
 
             services.AddMvc();
+            services.AddSqlCommenter();
 
             services.AddDbContext<TestContext>((p, o) =>
-                o.UseNpgsql("Host=localhost;Database=sqlcommenter;Username=postgres"));
+                o.UseNpgsql("Host=localhost;Database=sqlcommenter;Username=postgres")
+                    .UseSqlCommenter(p));
             
 
 

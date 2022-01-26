@@ -19,4 +19,7 @@
         </PackageReference>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.18" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\SqlCommenterNet\SqlCommenterNet.csproj" />
+    </ItemGroup>
 </Project>
