@@ -12,6 +12,9 @@ namespace SqlCommenter
         {
             services.AddHttpContextAccessor();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddTransient<ICommentGenerator, CommentGenerator>();
+            services.AddTransient<IAttributeCollector, AttributeCollector>();
+            services.AddTransient<ISqlCommenterService, SqlCommenterService>();
             services.AddTransient<SqlCommenterInterceptor>();
         }
         
