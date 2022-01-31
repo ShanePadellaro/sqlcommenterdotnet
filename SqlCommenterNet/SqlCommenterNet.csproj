@@ -10,6 +10,9 @@
         <Authors>Shane Padellaro</Authors>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageLicenseUrl>https://www.mit.edu/~amini/LICENSE.md</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/ShanePadellaro/sqlcommenterdotnet</PackageProjectUrl>
+        <Description>Dotnet implementation of the SqlCommenter spec created by Google for SQL query analysis. https://google.github.io/sqlcommenter/</Description>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
