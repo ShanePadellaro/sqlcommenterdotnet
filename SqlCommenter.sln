@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlCommenterNet", "SqlCommenterNet\SqlCommenterNet.csproj", "{F6933088-70C2-441C-9283-7019E40B3460}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlCommenter", "SqlCommenter\SqlCommenter.csproj", "{F6933088-70C2-441C-9283-7019E40B3460}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNet6", "TestNet6\TestNet6.csproj", "{032A7A9E-8ACC-45E5-8013-9B5A9324DA22}"
 EndProject

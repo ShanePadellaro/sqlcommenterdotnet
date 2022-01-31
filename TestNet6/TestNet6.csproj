@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SqlCommenterNet\SqlCommenterNet.csproj" />
+      <ProjectReference Include="..\SqlCommenter\SqlCommenter.csproj" />
     </ItemGroup>
 
 </Project>
