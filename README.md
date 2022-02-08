@@ -6,10 +6,10 @@ Dotnet implementation of the SqlCommenter spec created by Google for SQL query a
 # Usage
 
 Add nuget package to csproj
-`<PackageReference Include="SqlCommenterDotnet" Version="0.1.0" />`
+`<PackageReference Include="SqlCommenterDotnet" Version="0.1.1" />`
 
 Or install using CLI
-`dotnet add package SqlCommenterDotnet --version 0.1.0`
+`dotnet add package SqlCommenterDotnet`
 
 Add package to services
 `services.AddSqlCommenter();`
