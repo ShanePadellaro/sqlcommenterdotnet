@@ -12,23 +12,7 @@ namespace SqlCommenter
             attributes.Add("framework", $"ASP.NET");
 
             if (context != null)
-            {
-                var rd = context.RouteData;
-                if (context?.HttpContext?.Request?.Path != null)
-                    attributes.Add("route", context?.HttpContext?.Request?.Path);
-
-                if (rd.Values.TryGetValue("controller", out var controller))
-                    attributes.Add("controller", controller.ToString());
-
-                if (rd.Values.TryGetValue("action", out var action))
-                    attributes.Add("action", action.ToString());
-
-                var headers = context.HttpContext.Request.Headers;
-                if (headers.TryGetValue("traceparent", out var traceParent))
-                    attributes.Add("traceparent", traceParent.ToString());
-                if (headers.TryGetValue("tracestate", out var tracestate))
-                    attributes.Add("tracestate", traceParent.ToString());
-            }
+                attributes = GetAttributesFromContext(context,attributes);
 
 
             if (eventData?.Context?.Database?.ProviderName != null)
@@ -36,6 +20,27 @@ namespace SqlCommenter
 
             return attributes;
 
+        }
+
+        public Dictionary<string,string> GetAttributesFromContext(ActionContext context, Dictionary<string,string> attributes)
+        {
+            var rd = context.RouteData;
+            if (context?.HttpContext?.Request?.Path != null)
+                attributes.Add("route", context?.HttpContext?.Request?.Path);
+
+            if (rd.Values.TryGetValue("controller", out var controller))
+                attributes.Add("controller", controller.ToString());
+
+            if (rd.Values.TryGetValue("action", out var action))
+                attributes.Add("action", action.ToString());
+
+            var headers = context.HttpContext.Request.Headers;
+            if (headers.TryGetValue("traceparent", out var traceParent))
+                attributes.Add("traceparent", traceParent.ToString());
+            if (headers.TryGetValue("tracestate", out var tracestate))
+                attributes.Add("tracestate", tracestate.ToString());
+
+            return attributes;
         }
     }
 }
