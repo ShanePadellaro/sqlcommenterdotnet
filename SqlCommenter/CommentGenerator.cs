@@ -28,7 +28,7 @@ namespace SqlCommenter
                 comment += $",{keyValuePair.Key}={keyValuePair.Value}";
             }
 
-            comment = comment.Substring(1);
+            comment = comment.Length > 1 ? comment.Substring(1):string.Empty;
             return comment;
         }
 
