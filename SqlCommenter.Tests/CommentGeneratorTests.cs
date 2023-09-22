@@ -5,26 +5,15 @@ using Xunit;
 
 namespace SqlCommenter.Tests;
 
-public class SqlCommenterTests
+public class CommentGeneratorTests
 {
     private readonly CommentGenerator _commenter;
 
-    public SqlCommenterTests()
+    public CommentGeneratorTests()
     {
         _commenter = new CommentGenerator();
     }
-    // [Fact]
-    // public void GenerateSqlComment_KeyAndValueIsURLEncoded()
-    // {
-    //     var attributes = new Dictionary<string, string>();
-    //     attributes.Add("TestKey","TestValue");
-    //     var comment = _commenter.GenerateSqlComment(attributes);
-    //
-    //     var key = UrlEncoder.Default.Encode("TestKey");
-    //     var value = UrlEncoder.Default.Encode("TestValue");
-    //     
-    //     comment.Should().Be($"{key}={value}");
-    // }
+ 
 
     [Fact]
     public void GenerateSqlComment_NullDictionary_Returns_Empty_String()
